@@ -1,0 +1,20 @@
+state/
+work/
+outputs/
+.venv/
+__pycache__/
+.pytest_cache/
+node_modules/
+dist/
+*.pyc
+data/raw/
+*.sqlite*
+
+# Local traffic captures and prepared partitions
+data/*
+!data/NOTICE.md
+*.csv
+*.npz
+*.npy
+*.rar
+*.zip

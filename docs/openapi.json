@@ -1,0 +1,1079 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Sentinel",
+    "description": "Local IoT federation control and measured model evaluations.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/api/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/state": {
+      "get": {
+        "summary": "State",
+        "operationId": "state_api_state_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Snapshot"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/devices": {
+      "get": {
+        "summary": "Devices",
+        "operationId": "devices_api_devices_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/DeviceView"
+                  },
+                  "type": "array",
+                  "title": "Response Devices Api Devices Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/devices/{cid}/power": {
+      "put": {
+        "summary": "Power",
+        "operationId": "power_api_devices__cid__power_put",
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Cid"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Power"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/threshold": {
+      "get": {
+        "summary": "Threshold",
+        "operationId": "threshold_api_threshold_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Set Threshold",
+        "operationId": "set_threshold_api_threshold_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Threshold"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs": {
+      "get": {
+        "summary": "Runs",
+        "operationId": "runs_api_runs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/RunInfo"
+                  },
+                  "type": "array",
+                  "title": "Response Runs Api Runs Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Start",
+        "operationId": "start_api_runs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RunConfig"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{rid}": {
+      "get": {
+        "summary": "Get Run",
+        "operationId": "get_run_api_runs__rid__get",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Run"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{rid}/stop": {
+      "post": {
+        "summary": "Stop",
+        "operationId": "stop_api_runs__rid__stop_post",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{rid}/continue": {
+      "post": {
+        "summary": "Resume",
+        "operationId": "resume_api_runs__rid__continue_post",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/runs/{rid}/rounds/{number}": {
+      "get": {
+        "summary": "Round Result",
+        "operationId": "round_result_api_runs__rid__rounds__number__get",
+        "parameters": [
+          {
+            "name": "rid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Rid"
+            }
+          },
+          {
+            "name": "number",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Round"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Counts": {
+        "properties": {
+          "benign": {
+            "type": "integer",
+            "title": "Benign"
+          },
+          "attack": {
+            "type": "integer",
+            "title": "Attack"
+          }
+        },
+        "type": "object",
+        "required": [
+          "benign",
+          "attack"
+        ],
+        "title": "Counts"
+      },
+      "DeviceView": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "device": {
+            "type": "string",
+            "title": "Device"
+          },
+          "partition_sha256": {
+            "type": "string",
+            "title": "Partition Sha256"
+          },
+          "counts": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Counts"
+            },
+            "type": "object",
+            "title": "Counts"
+          },
+          "online": {
+            "type": "boolean",
+            "title": "Online"
+          },
+          "generation": {
+            "type": "integer",
+            "title": "Generation"
+          },
+          "last": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Last"
+          },
+          "eligible": {
+            "type": "boolean",
+            "title": "Eligible"
+          },
+          "activity": {
+            "type": "string",
+            "title": "Activity"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "device",
+          "partition_sha256",
+          "counts",
+          "online",
+          "generation",
+          "last",
+          "eligible",
+          "activity"
+        ],
+        "title": "DeviceView"
+      },
+      "Evaluation": {
+        "properties": {
+          "pooled": {
+            "$ref": "#/components/schemas/Metrics"
+          },
+          "clients": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Metrics"
+            },
+            "type": "object",
+            "title": "Clients"
+          },
+          "errors": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Errors"
+          },
+          "expected": {
+            "type": "integer",
+            "title": "Expected"
+          },
+          "evaluated": {
+            "type": "integer",
+            "title": "Evaluated"
+          },
+          "coverage": {
+            "type": "string",
+            "enum": [
+              "full",
+              "partial",
+              "unavailable"
+            ],
+            "title": "Coverage"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pooled",
+          "clients",
+          "errors",
+          "expected",
+          "evaluated",
+          "coverage"
+        ],
+        "title": "Evaluation"
+      },
+      "FinalEvaluation": {
+        "properties": {
+          "pooled": {
+            "$ref": "#/components/schemas/Metrics"
+          },
+          "clients": {
+            "additionalProperties": {
+              "$ref": "#/components/schemas/Metrics"
+            },
+            "type": "object",
+            "title": "Clients"
+          },
+          "errors": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "type": "object",
+            "title": "Errors"
+          },
+          "expected": {
+            "type": "integer",
+            "title": "Expected"
+          },
+          "evaluated": {
+            "type": "integer",
+            "title": "Evaluated"
+          },
+          "coverage": {
+            "type": "string",
+            "enum": [
+              "full",
+              "partial",
+              "unavailable"
+            ],
+            "title": "Coverage"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          }
+        },
+        "type": "object",
+        "required": [
+          "pooled",
+          "clients",
+          "errors",
+          "expected",
+          "evaluated",
+          "coverage",
+          "version"
+        ],
+        "title": "FinalEvaluation"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Metrics": {
+        "properties": {
+          "benign": {
+            "type": "integer",
+            "title": "Benign"
+          },
+          "attack": {
+            "type": "integer",
+            "title": "Attack"
+          },
+          "n": {
+            "type": "integer",
+            "title": "N"
+          },
+          "tn": {
+            "type": "integer",
+            "title": "Tn"
+          },
+          "fp": {
+            "type": "integer",
+            "title": "Fp"
+          },
+          "fn": {
+            "type": "integer",
+            "title": "Fn"
+          },
+          "tp": {
+            "type": "integer",
+            "title": "Tp"
+          },
+          "accuracy": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Accuracy"
+          },
+          "precision": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Precision"
+          },
+          "recall": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recall"
+          },
+          "f1": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "F1"
+          },
+          "loss": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Loss"
+          }
+        },
+        "type": "object",
+        "required": [
+          "benign",
+          "attack",
+          "n",
+          "tn",
+          "fp",
+          "fn",
+          "tp",
+          "accuracy",
+          "precision",
+          "recall",
+          "f1",
+          "loss"
+        ],
+        "title": "Metrics"
+      },
+      "Power": {
+        "properties": {
+          "online": {
+            "type": "boolean",
+            "title": "Online"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "online"
+        ],
+        "title": "Power"
+      },
+      "Round": {
+        "properties": {
+          "number": {
+            "type": "integer",
+            "title": "Number"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "ended": {
+            "type": "string",
+            "title": "Ended"
+          },
+          "duration": {
+            "type": "number",
+            "title": "Duration"
+          },
+          "version": {
+            "type": "string",
+            "title": "Version"
+          },
+          "checkpoint": {
+            "type": "string",
+            "title": "Checkpoint"
+          },
+          "delta": {
+            "type": "number",
+            "title": "Delta"
+          },
+          "participants": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Participants"
+          },
+          "examples": {
+            "type": "integer",
+            "title": "Examples"
+          },
+          "training_loss": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Training Loss"
+          },
+          "validation": {
+            "$ref": "#/components/schemas/Evaluation"
+          }
+        },
+        "type": "object",
+        "required": [
+          "number",
+          "status",
+          "ended",
+          "duration",
+          "version",
+          "checkpoint",
+          "delta",
+          "participants",
+          "examples",
+          "training_loss",
+          "validation"
+        ],
+        "title": "Round"
+      },
+      "Run": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "started": {
+            "type": "string",
+            "title": "Started"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "completed": {
+            "type": "integer",
+            "title": "Completed"
+          },
+          "ended": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ended"
+          },
+          "config": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Config"
+          },
+          "cohort": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Cohort"
+          },
+          "profile": {
+            "type": "string",
+            "title": "Profile"
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "title": "Manifest Sha256"
+          },
+          "initial_minimum": {
+            "type": "integer",
+            "title": "Initial Minimum"
+          },
+          "majority": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Majority"
+          },
+          "rounds": {
+            "items": {
+              "$ref": "#/components/schemas/Round"
+            },
+            "type": "array",
+            "title": "Rounds"
+          },
+          "attempts": {
+            "items": {
+              "additionalProperties": true,
+              "type": "object"
+            },
+            "type": "array",
+            "title": "Attempts"
+          },
+          "test": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/FinalEvaluation"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "started",
+          "status",
+          "completed",
+          "ended",
+          "config",
+          "cohort",
+          "profile",
+          "manifest_sha256",
+          "initial_minimum",
+          "rounds",
+          "attempts",
+          "test",
+          "error"
+        ],
+        "title": "Run"
+      },
+      "RunConfig": {
+        "properties": {
+          "rounds": {
+            "type": "integer",
+            "maximum": 100.0,
+            "minimum": 1.0,
+            "title": "Rounds",
+            "default": 3
+          },
+          "epochs": {
+            "type": "integer",
+            "maximum": 20.0,
+            "minimum": 1.0,
+            "title": "Epochs",
+            "default": 1
+          },
+          "batch": {
+            "type": "integer",
+            "maximum": 4096.0,
+            "minimum": 1.0,
+            "title": "Batch",
+            "default": 64
+          },
+          "lr": {
+            "type": "number",
+            "maximum": 1.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Lr",
+            "default": 0.001
+          },
+          "seed": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "minimum": 0.0,
+            "title": "Seed",
+            "default": 42
+          },
+          "review": {
+            "type": "boolean",
+            "title": "Review",
+            "default": false
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "RunConfig"
+      },
+      "RunInfo": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "started": {
+            "type": "string",
+            "title": "Started"
+          },
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "completed": {
+            "type": "integer",
+            "title": "Completed"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "started",
+          "status",
+          "completed"
+        ],
+        "title": "RunInfo"
+      },
+      "Snapshot": {
+        "properties": {
+          "devices": {
+            "items": {
+              "$ref": "#/components/schemas/DeviceView"
+            },
+            "type": "array",
+            "title": "Devices"
+          },
+          "profile": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Profile"
+          },
+          "minimum": {
+            "type": "integer",
+            "title": "Minimum"
+          },
+          "online": {
+            "type": "integer",
+            "title": "Online"
+          },
+          "ready": {
+            "type": "boolean",
+            "title": "Ready"
+          },
+          "run": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/Run"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "type": "object",
+        "required": [
+          "devices",
+          "profile",
+          "minimum",
+          "online",
+          "ready",
+          "run"
+        ],
+        "title": "Snapshot"
+      },
+      "Threshold": {
+        "properties": {
+          "minimum": {
+            "type": "integer",
+            "title": "Minimum"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "minimum"
+        ],
+        "title": "Threshold"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

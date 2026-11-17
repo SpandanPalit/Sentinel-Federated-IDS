@@ -1,0 +1,806 @@
+{
+  "id": "ae8717de0f79",
+  "started": "2026-11-17T09:14:40.308694+00:00",
+  "ended": "2026-11-17T09:14:42.639070+00:00",
+  "status": "completed",
+  "config": {
+    "rounds": 2,
+    "epochs": 1,
+    "batch": 64,
+    "lr": 0.001,
+    "seed": 42,
+    "review": true
+  },
+  "cohort": [
+    {
+      "id": "1",
+      "name": "Client 1",
+      "device": "Danmini_Doorbell",
+      "partition_sha256": "d6f2dc93d772847639fe238dde98376c0057d87ba8cd087ecc9ce874e6dfe58c",
+      "sources": [
+        {
+          "file": "Danmini_Doorbell/benign_traffic.csv",
+          "split": "train",
+          "rows_read": 1792,
+          "start": 0,
+          "end_exclusive": 1024,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "b1ccf15fbb3900425530d279fce3dd5d84644c644ed345d1cec5452114acebf1",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/gafgyt_attacks/combo.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "20b4b64ecf74387353d30bbea0356ab5ff8543ac4012f8b43d7faa122b6d1625",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/gafgyt_attacks/junk.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "046c9d0961563d2637dd0b7b7a153c82bb076398e671c02adb6b033e3c2f06a5",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/gafgyt_attacks/scan.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "06ff51a1aa8966cceb24686d5e037ed2508ff6ec9c6520fe2c0aadce74c3c0bd",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/gafgyt_attacks/tcp.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "ce5863d9392fd99a4e8a7df1ce2b1f65aa1f9e94500a05eeacedf45dada4bf99",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/gafgyt_attacks/udp.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "107993e2013d6358de0174f39ec7e709444ff8a583d3c0aa2ce35f1945988f9c",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/mirai_attacks/ack.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "0d99aced35f7e560c61983c33bff0ff633dbf3ad2efdfb2c358448ff312e9ab2",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/benign_traffic.csv",
+          "split": "validation",
+          "rows_read": 1792,
+          "start": 1152,
+          "end_exclusive": 1408,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "98e139ecd4198da07f4b0d2b4da350be1c0e12c5577d0735d6fa670ee436a58b",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/mirai_attacks/scan.csv",
+          "split": "validation",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "1c299ddc30ee9b81bd4f1d2d89ae156262c24d04cc86cae98fce4b60e4904d27",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/mirai_attacks/syn.csv",
+          "split": "validation",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "c6ac21a34078385556c9a49d875bf11330e8eba4f84e91d9753a9284aa02ab2c",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/benign_traffic.csv",
+          "split": "test",
+          "rows_read": 1792,
+          "start": 1536,
+          "end_exclusive": 1792,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "2ed9a535757a9303358aeb49e7dc096b3d213e6b4eff46a91eab31b8fa3227b9",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/mirai_attacks/udp.csv",
+          "split": "test",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "8210ab484c5b203c048c42c4f7f3cb1e1c43b3873744cb1bfeb72a6a2d087414",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Danmini_Doorbell/mirai_attacks/udpplain.csv",
+          "split": "test",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "258a29ed3fbfe4eea96c4b67f93a48f04326ad9191e010369472a9482a5bbd39",
+          "overlap_removed": 0
+        }
+      ],
+      "counts": {
+        "train": {
+          "benign": 1024,
+          "attack": 1536
+        },
+        "validation": {
+          "benign": 256,
+          "attack": 512
+        },
+        "test": {
+          "benign": 256,
+          "attack": 512
+        }
+      },
+      "cross_split_removed": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      }
+    },
+    {
+      "id": "2",
+      "name": "Client 2",
+      "device": "Ecobee_Thermostat",
+      "partition_sha256": "11f751cd8ca58024615318ef56f88aa6924e97ae174e3254d0eec879e94cbd7d",
+      "sources": [
+        {
+          "file": "Ecobee_Thermostat/benign_traffic.csv",
+          "split": "train",
+          "rows_read": 1792,
+          "start": 0,
+          "end_exclusive": 1024,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "1edf7007dd1839c57a1d8ad23822367426b2fe8db4d0896a946ff3fa89f83d5c",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/gafgyt_attacks/combo.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "5ed8e592635666ecd16beaaaa2d7f65007eb36be37ebcfede7ddaaf062fe0f0a",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/gafgyt_attacks/junk.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "fd736d1ea08b5764e5a43efdcbfd531b753ea75373e94f1452209a25f6c58b00",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/gafgyt_attacks/scan.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "7291299223ea3f8d838ccc964f9aa481afcdbc36387582665d2813d1011ced8c",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/gafgyt_attacks/tcp.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "cc2dfad9e52b329aa396c13d689a407b74c9929027ed1464ddc315c287d5266b",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/gafgyt_attacks/udp.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "cae9fd25760a15bf905a584ac6ba11bf7b6117e5cb155cf0a1c746e0ea286e67",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/mirai_attacks/ack.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "6ff11f9cfa18dbb58e38b56ffd8f4a65ee9b26e9ef7124472120f2d9d9e3eb1a",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/benign_traffic.csv",
+          "split": "validation",
+          "rows_read": 1792,
+          "start": 1152,
+          "end_exclusive": 1408,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "594d6e9b07e8ef3046168181fa79d7d4646c211aed207cdec139716206f5e12e",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/mirai_attacks/scan.csv",
+          "split": "validation",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "965faea5467aba44ac47ab2dd1f0f0afc290891ecb1b231800a2bd18a4685c24",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/mirai_attacks/syn.csv",
+          "split": "validation",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "915b48251a24a123f8391fc7bb7e7f573335c39493a3b794b283246b87ec3fda",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/benign_traffic.csv",
+          "split": "test",
+          "rows_read": 1792,
+          "start": 1536,
+          "end_exclusive": 1792,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "e2a212915a41965a7875a61457ca35069c365275b33ddba04dfe04a9e9817337",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/mirai_attacks/udp.csv",
+          "split": "test",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "f5c17a355ae0e4e6a30c01091484e3d021b8bd6dfb5c9c74b1dd690e6f701cfc",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ecobee_Thermostat/mirai_attacks/udpplain.csv",
+          "split": "test",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "9ed8ad5337126fc46d54f0819ffc2e156c5504099d752fab414bfda19cc8fb45",
+          "overlap_removed": 0
+        }
+      ],
+      "counts": {
+        "train": {
+          "benign": 1024,
+          "attack": 1536
+        },
+        "validation": {
+          "benign": 256,
+          "attack": 512
+        },
+        "test": {
+          "benign": 256,
+          "attack": 512
+        }
+      },
+      "cross_split_removed": {
+        "train": 0,
+        "validation": 0,
+        "test": 0
+      }
+    },
+    {
+      "id": "3",
+      "name": "Client 3",
+      "device": "Ennio_Doorbell",
+      "partition_sha256": "cb8d54418047f6c71375713e71ea67ead08e65276a7878c6e9c7139a47191002",
+      "sources": [
+        {
+          "file": "Ennio_Doorbell/benign_traffic.csv",
+          "split": "train",
+          "rows_read": 1792,
+          "start": 0,
+          "end_exclusive": 1024,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "0a1880dd4c7fb995a725598f716700a927853f9962eda979c2a9227701d6ff27",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ennio_Doorbell/gafgyt_attacks/combo.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "1dac6e331e168887bd0dbb28d9797d20a5c260a72e32cbbc79c13b4fcf0be16a",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ennio_Doorbell/gafgyt_attacks/junk.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "8af645a97bd5ccccceaaa1c393485d3111c324842e3452649e71fa09bd488384",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ennio_Doorbell/gafgyt_attacks/scan.csv",
+          "split": "train",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "8b938654b0fa453c57cb8d3ff5ac2b9322a226edbdac67f842568b50a186506e",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ennio_Doorbell/benign_traffic.csv",
+          "split": "validation",
+          "rows_read": 1792,
+          "start": 1152,
+          "end_exclusive": 1408,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "5dd6a224d8c4aeb5759ebe32bc1644fde5c37c10296fef68b9bb468c6fd4939c",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ennio_Doorbell/gafgyt_attacks/tcp.csv",
+          "split": "validation",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "8badc8fd5cba18c5912e0f0de8196eefadc37e0841f7400c5fa1752ad30e490e",
+          "overlap_removed": 8
+        },
+        {
+          "file": "Ennio_Doorbell/benign_traffic.csv",
+          "split": "test",
+          "rows_read": 1792,
+          "start": 1536,
+          "end_exclusive": 1792,
+          "selection": "ordered block within prefix",
+          "raw_block_sha256": "fe47e9d0fee12af4fb08e75c3e85d153b0712bfe220b6372d1228e1dfc9e726e",
+          "overlap_removed": 0
+        },
+        {
+          "file": "Ennio_Doorbell/gafgyt_attacks/udp.csv",
+          "split": "test",
+          "rows_read": 256,
+          "start": 0,
+          "end_exclusive": 256,
+          "selection": "capture prefix",
+          "raw_block_sha256": "31446fff6ea4d6bca27e8779d979124742d09bc02b5abbfaf89daa22507839c3",
+          "overlap_removed": 14
+        }
+      ],
+      "counts": {
+        "train": {
+          "benign": 1024,
+          "attack": 768
+        },
+        "validation": {
+          "benign": 256,
+          "attack": 248
+        },
+        "test": {
+          "benign": 256,
+          "attack": 242
+        }
+      },
+      "cross_split_removed": {
+        "train": 0,
+        "validation": 8,
+        "test": 14
+      }
+    }
+  ],
+  "profile": "demo",
+  "manifest_sha256": "c43d2455fc76fd732f0c4db204bf24c3e7ca6efbd0b6ac28576105b1efc89c0d",
+  "initial_minimum": 3,
+  "completed": 2,
+  "rounds": [
+    {
+      "number": 0,
+      "status": "baseline",
+      "ended": "2026-11-17T09:14:40.404409+00:00",
+      "duration": 0.05087929998990148,
+      "version": "eabc0f469e774dbcc587a51ba912a4bb699d73631d9de8cf9632fa7d593571ce",
+      "checkpoint": "checkpoints/ae8717de0f79/round-000.npz",
+      "delta": 0.0,
+      "participants": [],
+      "examples": 0,
+      "training_loss": null,
+      "validation": {
+        "pooled": {
+          "tn": 74,
+          "fp": 694,
+          "fn": 0,
+          "tp": 1272,
+          "n": 2040,
+          "benign": 768,
+          "attack": 1272,
+          "accuracy": 0.6598039215686274,
+          "precision": 0.646998982706002,
+          "recall": 1.0,
+          "f1": 0.7856701667696109,
+          "loss": 0.6506639517989813
+        },
+        "clients": {
+          "1": {
+            "tn": 4,
+            "fp": 252,
+            "fn": 0,
+            "tp": 512,
+            "n": 768,
+            "benign": 256,
+            "attack": 512,
+            "accuracy": 0.671875,
+            "precision": 0.6701570680628273,
+            "recall": 1.0,
+            "f1": 0.8025078369905956,
+            "loss": 0.6421399513880411
+          },
+          "2": {
+            "tn": 49,
+            "fp": 207,
+            "fn": 0,
+            "tp": 512,
+            "n": 768,
+            "benign": 256,
+            "attack": 512,
+            "accuracy": 0.73046875,
+            "precision": 0.7121001390820584,
+            "recall": 1.0,
+            "f1": 0.8318440292445166,
+            "loss": 0.6361671288808187
+          },
+          "3": {
+            "tn": 21,
+            "fp": 235,
+            "fn": 0,
+            "tp": 248,
+            "n": 504,
+            "benign": 256,
+            "attack": 248,
+            "accuracy": 0.5337301587301587,
+            "precision": 0.5134575569358178,
+            "recall": 1.0,
+            "f1": 0.6785225718194254,
+            "loss": 0.6857433016338046
+          }
+        },
+        "errors": {},
+        "coverage": "full",
+        "expected": 3,
+        "evaluated": 3
+      }
+    },
+    {
+      "number": 1,
+      "status": "committed",
+      "ended": "2026-11-17T09:14:42.460419+00:00",
+      "duration": 1.9728604999836534,
+      "version": "470ff9ae728d99e02855f9c38c80a7b84fbd883bf1da8fa9777728b39229b072",
+      "checkpoint": "checkpoints/ae8717de0f79/round-001.npz",
+      "delta": 1.737968086419389,
+      "participants": [
+        "1",
+        "2",
+        "3"
+      ],
+      "examples": 6912,
+      "training_loss": 0.35105708986520767,
+      "validation": {
+        "pooled": {
+          "tn": 767,
+          "fp": 1,
+          "fn": 1,
+          "tp": 1271,
+          "n": 2040,
+          "benign": 768,
+          "attack": 1272,
+          "accuracy": 0.9990196078431373,
+          "precision": 0.9992138364779874,
+          "recall": 0.9992138364779874,
+          "f1": 0.9992138364779874,
+          "loss": 0.08739574469772039
+        },
+        "clients": {
+          "1": {
+            "tn": 256,
+            "fp": 0,
+            "fn": 0,
+            "tp": 512,
+            "n": 768,
+            "benign": 256,
+            "attack": 512,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "loss": 0.09406037131945293
+          },
+          "2": {
+            "tn": 256,
+            "fp": 0,
+            "fn": 0,
+            "tp": 512,
+            "n": 768,
+            "benign": 256,
+            "attack": 512,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "loss": 0.07854029536247253
+          },
+          "3": {
+            "tn": 255,
+            "fp": 1,
+            "fn": 1,
+            "tp": 247,
+            "n": 504,
+            "benign": 256,
+            "attack": 248,
+            "accuracy": 0.996031746031746,
+            "precision": 0.9959677419354839,
+            "recall": 0.9959677419354839,
+            "f1": 0.9959677419354839,
+            "loss": 0.09073414121355329
+          }
+        },
+        "errors": {},
+        "coverage": "full",
+        "expected": 3,
+        "evaluated": 3
+      }
+    },
+    {
+      "number": 2,
+      "status": "committed",
+      "ended": "2026-11-17T09:14:42.633338+00:00",
+      "duration": 0.06037239998113364,
+      "version": "fec0ec71f8db76a7bf44bbb7337e580ff963ae8624a7d05810445ce00816eb4e",
+      "checkpoint": "checkpoints/ae8717de0f79/round-002.npz",
+      "delta": 1.149139994617992,
+      "participants": [
+        "2",
+        "3",
+        "1"
+      ],
+      "examples": 6912,
+      "training_loss": 0.052530188803319576,
+      "validation": {
+        "pooled": {
+          "tn": 767,
+          "fp": 1,
+          "fn": 1,
+          "tp": 1271,
+          "n": 2040,
+          "benign": 768,
+          "attack": 1272,
+          "accuracy": 0.9990196078431373,
+          "precision": 0.9992138364779874,
+          "recall": 0.9992138364779874,
+          "f1": 0.9992138364779874,
+          "loss": 0.009679667038076064
+        },
+        "clients": {
+          "1": {
+            "tn": 256,
+            "fp": 0,
+            "fn": 0,
+            "tp": 512,
+            "n": 768,
+            "benign": 256,
+            "attack": 512,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "loss": 0.006036326910058658
+          },
+          "2": {
+            "tn": 256,
+            "fp": 0,
+            "fn": 0,
+            "tp": 512,
+            "n": 768,
+            "benign": 256,
+            "attack": 512,
+            "accuracy": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "loss": 0.005051847857733567
+          },
+          "3": {
+            "tn": 255,
+            "fp": 1,
+            "fn": 1,
+            "tp": 247,
+            "n": 504,
+            "benign": 256,
+            "attack": 248,
+            "accuracy": 0.996031746031746,
+            "precision": 0.9959677419354839,
+            "recall": 0.9959677419354839,
+            "f1": 0.9959677419354839,
+            "loss": 0.02228333836510068
+          }
+        },
+        "errors": {},
+        "coverage": "full",
+        "expected": 3,
+        "evaluated": 3
+      }
+    }
+  ],
+  "attempts": [
+    {
+      "id": 1,
+      "number": 1,
+      "selected": [
+        "1",
+        "2",
+        "3"
+      ],
+      "minimum": 3,
+      "started": "2026-11-17T09:14:40.486033+00:00",
+      "status": "committed",
+      "input_version": "eabc0f469e774dbcc587a51ba912a4bb699d73631d9de8cf9632fa7d593571ce",
+      "accepted": {
+        "1": 2560,
+        "2": 2560,
+        "3": 1792
+      },
+      "errors": [],
+      "ended": "2026-11-17T09:14:42.440990+00:00",
+      "dropped": [],
+      "version": "470ff9ae728d99e02855f9c38c80a7b84fbd883bf1da8fa9777728b39229b072"
+    },
+    {
+      "id": 2,
+      "number": 2,
+      "selected": [
+        "1",
+        "2",
+        "3"
+      ],
+      "minimum": 3,
+      "started": "2026-11-17T09:14:42.571129+00:00",
+      "status": "committed",
+      "input_version": "470ff9ae728d99e02855f9c38c80a7b84fbd883bf1da8fa9777728b39229b072",
+      "accepted": {
+        "2": 2560,
+        "3": 1792,
+        "1": 2560
+      },
+      "errors": [],
+      "ended": "2026-11-17T09:14:42.627237+00:00",
+      "dropped": [],
+      "version": "fec0ec71f8db76a7bf44bbb7337e580ff963ae8624a7d05810445ce00816eb4e"
+    }
+  ],
+  "test": {
+    "version": "fec0ec71f8db76a7bf44bbb7337e580ff963ae8624a7d05810445ce00816eb4e",
+    "pooled": {
+      "tn": 767,
+      "fp": 1,
+      "fn": 9,
+      "tp": 1257,
+      "n": 2034,
+      "benign": 768,
+      "attack": 1266,
+      "accuracy": 0.9950835791543756,
+      "precision": 0.9992050874403816,
+      "recall": 0.9928909952606635,
+      "f1": 0.9960380348652932,
+      "loss": 0.03670139369008112
+    },
+    "clients": {
+      "1": {
+        "tn": 256,
+        "fp": 0,
+        "fn": 3,
+        "tp": 509,
+        "n": 768,
+        "benign": 256,
+        "attack": 512,
+        "accuracy": 0.99609375,
+        "precision": 1.0,
+        "recall": 0.994140625,
+        "f1": 0.9970617042115573,
+        "loss": 0.03726970156033834
+      },
+      "2": {
+        "tn": 256,
+        "fp": 0,
+        "fn": 6,
+        "tp": 506,
+        "n": 768,
+        "benign": 256,
+        "attack": 512,
+        "accuracy": 0.9921875,
+        "precision": 1.0,
+        "recall": 0.98828125,
+        "f1": 0.9941060903732809,
+        "loss": 0.052576993902524315
+      },
+      "3": {
+        "tn": 255,
+        "fp": 1,
+        "fn": 0,
+        "tp": 242,
+        "n": 498,
+        "benign": 256,
+        "attack": 242,
+        "accuracy": 0.9979919678714859,
+        "precision": 0.9958847736625515,
+        "recall": 1.0,
+        "f1": 0.9979381443298969,
+        "loss": 0.011342113755314225
+      }
+    },
+    "errors": {},
+    "coverage": "full",
+    "expected": 3,
+    "evaluated": 3
+  },
+  "error": null,
+  "majority": {
+    "prediction": 1,
+    "tn": 0,
+    "fp": 768,
+    "fn": 0,
+    "tp": 1272,
+    "n": 2040,
+    "benign": 768,
+    "attack": 1272,
+    "accuracy": 0.6235294117647059,
+    "precision": 0.6235294117647059,
+    "recall": 1.0,
+    "f1": 0.7681159420289855,
+    "loss": null
+  }
+}
